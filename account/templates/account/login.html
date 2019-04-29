@@ -4,7 +4,7 @@
 
 {% block content %}
   <h1>Log-in</h1>
-  <p>Please, use the following form to log-in:</p>
+  <p>Please, use the following form to log-in, or <a href="{% url "register" %}">register an account</a></p>
   <form action="." method="post">
     {{ form.as_p }}
     {% csrf_token %}
