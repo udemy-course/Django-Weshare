@@ -72,4 +72,5 @@ doc/build
 
 .vscode/
 .env/
+.venv/
 db.sqlite3
