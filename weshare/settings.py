@@ -21,7 +21,14 @@ LOGOUT_URL = '/account/logout'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
 ]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '460766971145-0tggfq57o9170kbfgt37ohjlqs6ssoq0.apps.googleusercontent.com' # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'P-ugFr1ksumqurbmP6W331Zv' # Google Consumer Secret
+SOCIAL_AUTH_GITHUB_KEY = 'c3600c6e524c578ec9b3'
+SOCIAL_AUTH_GITHUB_SECRET = '8925f659a88e6e622748a5322207149681fc4fb5'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

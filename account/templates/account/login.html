@@ -10,4 +10,6 @@
     {% csrf_token %}
     <p><input type="submit" value="Log in"></p>
   </form>
+  <li><a href="{% url "social:begin" "google-oauth2" %}">Login with Google</a></li>
+  <li><a href="{% url "social:begin" "github" %}">Login with GitHub</a></li>
 {% endblock %}
