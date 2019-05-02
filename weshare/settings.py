@@ -36,8 +36,7 @@ SECRET_KEY = '5rxe%*%2%ap=3n%pd19+)xy(0__2fijzo0x6%&f1l*u#z8py-n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['weshare.com']
 
 # Application definition
 
@@ -48,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account.apps.AccountConfig'
+    'account.apps.AccountConfig',
+    'social_django'
 ]
 
 MIDDLEWARE = [
