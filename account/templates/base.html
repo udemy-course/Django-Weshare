@@ -8,6 +8,16 @@
 <body>
   <div id="header">
     <span class="logo">WeShare</span>
+    {% if request.user.is_authenticated %}
+      <ul class="menu">
+        <li>
+          <a href="{% url "dashboard" %}">My dashboard</a>
+        </li>
+        <li>
+          <a href="#">Images</a>
+        </li>
+      </ul>
+    {% endif %}
     <span class="user">
       {% if request.user.is_authenticated %}
         Hello {{ request.user.first_name }},
