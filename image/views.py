@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from .forms import ImageForm
+from .models import Image
 
 
 @login_required
@@ -26,4 +27,14 @@ def image_list(request):
     return render(
         request,
         'image/image_list.html'
+    )
+
+
+@login_required
+def image_detail(request, id, slug):
+    image = Image.objects.filter(id=id, slug=slug).first()
+    return render(
+        request,
+        'image/image_detail.html',
+        {'image': image}
     )
