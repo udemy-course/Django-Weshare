@@ -74,3 +74,4 @@ doc/build
 .env/
 .venv/
 db.sqlite3
+media/
