@@ -3,6 +3,8 @@ from django.urls import path
 from . import views
 
 
+app_name = 'images'
+
 urlpatterns = [
     path(
         'upload/',
@@ -10,7 +12,7 @@ urlpatterns = [
         name='image_upload'
     ),
     path(
-        'list/',
+        '',
         views.image_list,
         name='image_list'
     ),

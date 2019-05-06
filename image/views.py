@@ -24,9 +24,11 @@ def image_upload(request):
 
 @login_required
 def image_list(request):
+    image_list = Image.objects.filter(user=request.user)
     return render(
         request,
-        'image/image_list.html'
+        'image/image_list.html',
+        {'images': image_list}
     )
 
 
