@@ -19,6 +19,15 @@ class Image(models.Model):
 
     image = models.ImageField(upload_to='images/%Y/%m/%d/')
 
+    user_like = models.ManyToManyField(
+        to=User,
+        related_name='images_liked',
+        blank=True
+    )
+
+    class Meta:
+        ordering = ('-created',)
+
     def __str__(self):
         return self.title
 
