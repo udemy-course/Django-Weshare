@@ -4,16 +4,30 @@
 
 {% block content %}
 
+{% load thumbnail %}
+
 <h1>Images</h1>
 
 <p>If you want to upload new images, please click <a href="{% url "images:image_upload" %}">here</a></p>
 
-{% for image in images %}
-  <div class="image">
-    <a href="{{ image.get_absolute_url }}">   
-        <img src="{{ image.image.url }}" height="200" width="300">
-    </a>
-  </div>
-{% endfor %}
+<div id="image-list">
 
+    {% for image in images %}
+    <div class="image">
+      <a href="{{ image.get_absolute_url }}">
+        {% thumbnail image.image "300x300" crop="center" as im %}
+          <a href="{{ image.get_absolute_url }}">
+            <img src="{{ im.url }}">
+          </a>
+        {% endthumbnail %}
+      </a>
+      <div class="info">
+        <a href="{{ image.get_absolute_url }}" class="title">
+          {{ image.title }}
+        </a>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>
 {% endblock %}
