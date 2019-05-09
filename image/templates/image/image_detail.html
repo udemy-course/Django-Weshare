@@ -7,8 +7,33 @@
 <h1>{{ image.title }}</h1>
 <img src="{{ image.image.url }}" class="image-detail">
 
-<div>
-    {{ image.description|linebreaks }}
+{% with total_likes=image.user_like.count users_like=image.user_like.all %}
+<div class="image-info">
+  <div>
+      {% if request.user in users_like %}
+        <a class="count-like" href="{% url "images:image_unlike" image.id %}">
+            {% if total_likes %}
+                {{ total_likes }}
+                like{{ total_likes|pluralize }}
+             {% else %}
+                {{ total_likes }}
+                like
+             {% endif %}
+        </a>
+     {% else %}
+        <a class="count" href="{% url "images:image_like" image.id %}">
+            {% if total_likes %}
+                {{ total_likes }}
+                like{{ total_likes|pluralize }}
+            {% else %}
+                {{ total_likes }}
+                like
+            {% endif %}
+        </a>
+    {% endif %}
+  </div>
+  {{ image.description|linebreaks }}
 </div>
+{% endwith %}
 
 {% endblock %}
