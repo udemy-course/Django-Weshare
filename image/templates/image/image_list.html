@@ -15,7 +15,7 @@
     {% for image in images %}
     <div class="image">
       <a href="{{ image.get_absolute_url }}">
-        {% thumbnail image.image "300x300" crop="center" as im %}
+        {% thumbnail image.image "300x300" crop="100%" as im %}
           <a href="{{ image.get_absolute_url }}">
             <img src="{{ im.url }}">
           </a>
@@ -24,10 +24,25 @@
       <div class="info">
         <a href="{{ image.get_absolute_url }}" class="title">
           {{ image.title }}
-        </a>
-      </div>
+          </a> </div>
     </div>
   {% endfor %}
-
 </div>
+
+<div>
+    <ul>
+      {% if images.has_previous %}
+        <li>
+          <a href="?page={{ images.previous_page_number }}"> &larr; Newer images</a>
+        </li>
+      {% endif %}
+      {% if images.has_next %}
+        <li>
+          <a href="?page={{ images.next_page_number }}">Older images &rarr;</a>
+        </li>
+      {% endif %}    
+    </ul>
+  </div>
+
+
 {% endblock %}
