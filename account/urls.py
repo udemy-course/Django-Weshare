@@ -33,5 +33,10 @@ urlpatterns = [
             template_name='account/password_change_done.html'
         ),
         name='password_change_done'
+    ),
+    path(
+        '<str:username>',
+        views.profile,
+        name='profile'
     )
 ]

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from .forms import MyUserCreationForm
 
@@ -29,4 +30,13 @@ def register(request):
         request,
         'account/register.html',
         {'user_form': user_form}
+    )
+
+
+@login_required
+def profile(request, username):
+    user = User.objects.filter(username=username).first()
+    return render(
+        request, 'account/profile.html',
+        {'user': user}
     )

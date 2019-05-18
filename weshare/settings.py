@@ -43,7 +43,7 @@ SECRET_KEY = '5rxe%*%2%ap=3n%pd19+)xy(0__2fijzo0x6%&f1l*u#z8py-n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['weshare.com']
+ALLOWED_HOSTS = ['weshare.com', '127.0.0.1']
 
 # Application definition
 
