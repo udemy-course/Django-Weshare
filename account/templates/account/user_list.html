@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}User List{% endblock %}
+
+{% block content %}
+
+  <h1>User List</h1>
+
+  <div id="image">
+  {% for user in user_list %}
+  <a href="{% url "profile" user.username %}">
+    <img src="{{ user.gravatar }}" class="item-img">
+  </a>
+ {% endfor %}
+ </div>
+{% endblock %}

@@ -40,3 +40,12 @@ def profile(request, username):
         request, 'account/profile.html',
         {'user': user}
     )
+
+
+@login_required
+def user_list(request):
+    user_list = User.objects.all()
+    return render(
+        request, 'account/user_list.html',
+        {'user_list': user_list}
+    )
