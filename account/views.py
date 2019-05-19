@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 from .forms import MyUserCreationForm
+from .models import Contact
 
 
 @login_required
@@ -49,3 +50,25 @@ def user_list(request):
         request, 'account/user_list.html',
         {'user_list': user_list}
     )
+
+
+@login_required
+def follow(request, username):
+    user_to = User.objects.filter(username=username).first()
+    user_from = request.user
+    con = Contact(
+        user_from=user_from,
+        user_to=user_to
+    )
+    con.save()
+    return redirect('profile', username=username)
+
+
+@login_required
+def unfollow(request, username):
+    user_to = User.objects.filter(username=username).first()
+    user_from = request.user
+    con = Contact.objects.filter(user_from=user_from, user_to=user_to).first()
+    if con:
+        con.delete()
+    return redirect('profile', username=username)
